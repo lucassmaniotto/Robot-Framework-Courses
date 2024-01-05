@@ -4,6 +4,7 @@ import './index.css';
 
 interface InputProps {
     onChange: (value: string) => void;
+    id?: string;
     className: string;
     placeholder?: string;
     label: string;
@@ -21,7 +22,7 @@ const Input = (props: InputProps) => {
     return(
         <div className="input__content">
             <label className="input__label">{props.label}</label>
-            <input value={props.value} onChange={handleChange} className={props.className} placeholder={props.placeholder} required={props.required} type={props.type}/>
+            <input value={props.value} onChange={handleChange} className={props.className} placeholder={props.placeholder} required={props.required} type={props.type} id={props.id}/>
         </div>
     )
 }

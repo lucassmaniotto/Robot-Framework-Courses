@@ -55,6 +55,7 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                 <form className="section__form-wrapper " onSubmit={onSave}>
                     <h2 className="section__form-title">Preencha os dados para criar o card do colaborador.</h2>
                     <Input
+                        id="name"
                         className="input__data"
                         label="Nome"
                         required={true}
@@ -63,6 +64,7 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                         onChange={value => setName(value)}
                     />
                     <Input
+                        id="charge"
                         className="input__data"
                         label="Cargo" 
                         required={true} 
@@ -70,21 +72,23 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                         value={charge}
                         onChange={value => setCharge(value)}
                     />
-                    <Input 
+                    <Input
+                        id="image"
                         className="input__data"
                         label="Imagem" 
                         placeholder="https://..." 
                         value={image}
                         onChange={value => setImage(value)}
                     />
-                    <Select 
+                    <Select
+                        id="crew"
                         label="Time" 
                         itens={crews} 
                         required={true} 
                         value={crew}
                         onChange={value => setCrew(value)}
                     />
-                    <Button>Criar card</Button>
+                    <Button id="button">Criar card</Button>
                 </form>
                 <form className="section__form-wrapper " onSubmit={onRegisterNewCrew}>
                     <h2 className="section__form-title">Ou crie um novo Time.</h2>
