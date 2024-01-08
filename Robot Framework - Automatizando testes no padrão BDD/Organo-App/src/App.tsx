@@ -49,7 +49,7 @@ function App() {
     color: '#FF8A29'
   }];
 
-  const initialUsers: IUser[] = [
+ /*  const initialUsers: IUser[] = [
     {
       id: id(),
       favorite: false,
@@ -147,7 +147,9 @@ function App() {
       image: 'https://www.alura.com.br/assets/img/lideres/daniel-artine.1647533644.jpeg',
       crew: crewList[5].name
     },
-  ];
+  ]; */
+
+  const initialUsers: IUser[] = [];
 
   const usersString = localStorage.getItem('users');
   const localUsers = usersString ? JSON.parse(usersString) : initialUsers;
