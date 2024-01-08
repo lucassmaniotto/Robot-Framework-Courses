@@ -88,13 +88,14 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                         value={crew}
                         onChange={value => setCrew(value)}
                     />
-                    <Button id="button">Criar card</Button>
+                    <Button id="button-person">Criar card</Button>
                 </form>
                 <form className="section__form-wrapper " onSubmit={onRegisterNewCrew}>
                     <h2 className="section__form-title">Ou crie um novo Time.</h2>
                     <div className="section__form-content">
                         <div className="section__form-colors">
                             <Input
+                                id="crewName"
                                 className="input__data input__data--color"
                                 label="Nome do time"
                                 required={true}
@@ -103,6 +104,7 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                                 onChange={value => setNewCrew(value)}
                             />
                             <Input
+                                id="color"
                                 className="input__color"
                                 label="Cor" 
                                 required={true} 
@@ -111,7 +113,7 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                                 onChange={value => setColor(value)}
                             />
                         </div>
-                        <Button>Criar time</Button>
+                        <Button id="button-crew">Criar time</Button>
                     </div>
                 </form>
             </div>
