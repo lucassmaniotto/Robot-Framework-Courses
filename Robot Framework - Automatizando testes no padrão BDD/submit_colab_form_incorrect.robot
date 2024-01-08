@@ -1,22 +1,20 @@
 *** Settings ***
 Library           SeleniumLibrary
+Resource          setup_teardown.robot
+Test Setup        Given I access Organo
+Test Teardown     Close's Browser
 
 *** Variables ***
-${URL}                     http://localhost:3000/
-${INPUT_NAME}              id:name
-${INPUT_CHARGE}            id:charge
-${INPUT_IMAGE}             id:image
-${INPUT_CREW}              id:crew
 ${BUTTON_SUBMIT_PERSON}    id:button-person
-${OPTION_PROGRAMACAO}      //option[contains(.,'Programação')]
-${OPTION_FRONT}            //option[contains(.,'Front-End')]
-${OPTION_DADOS}            //option[contains(.,'Data Science')]
-${OPTION_DEVOPS}           //option[contains(.,'Devops')] 
-${OPTION_UX}               //option[contains(.,'UX e Design')]
-${OPTION_MOBILE}           //option[contains(.,'Mobile')]
-${OPTION_INOVACAO}         //option[contains(.,'Inovação e Gestão')]
 
 *** Test Cases ***
-
+Verify if a obrigatory field isn't filled correctly the system will show a warning message
+    Given I click on the submit button
+    Then the system will show a warning message
 
 *** Keywords ***
+Given I click on the submit button
+    Click Element    ${BUTTON_SUBMIT_PERSON}
+Then the system will show a warning message
+    Element Should Be Visible     class:error-message
+    Element Text Should Be        class:error-message    Preencha todos os campos obrigatórios.

@@ -49,6 +49,48 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
         setColor('#6278f7');
     }
 
+    const verifyIfRequiredFieldsAreFilled = () => {
+        const nameInput = document.getElementById('name') as HTMLInputElement;
+        const chargeInput = document.getElementById('charge') as HTMLInputElement;
+        const crewInput = document.getElementById('crew') as HTMLInputElement;
+
+        
+        if (nameInput?.hasAttribute('required') && chargeInput?.hasAttribute('required') && crewInput?.hasAttribute('required')) {
+            const errorMessage = document.createElement('p');
+            errorMessage.classList.add('error-message');
+            errorMessage.innerText = 'Preencha todos os campos obrigatórios.';
+
+            const hasErrorMessage = document.querySelector('.error-message');
+
+            if (hasErrorMessage) {
+                hasErrorMessage.remove();
+            }
+
+            if (!nameInput.value || !chargeInput.value || !crewInput.value) {
+                if (!nameInput.value) {
+                    nameInput.classList.add('error-field');
+                } else {
+                    nameInput.classList.remove('error-field');
+                }
+    
+                if (!chargeInput.value) {
+                    chargeInput.classList.add('error-field');
+                } else {
+                    chargeInput.classList.remove('error-field');
+                }
+    
+                if (!crewInput.value) {
+                    crewInput.classList.add('error-field');
+                } else {
+                    crewInput.classList.remove('error-field');
+                }
+    
+                const form = document.querySelector('.section__form-wrapper');
+                form?.appendChild(errorMessage);
+            }
+        }
+    }
+
     return (
         <section className="section__form">
             <div className="section__form-div">
@@ -88,7 +130,7 @@ const Form = ({forRegisteredUser, forHideForm, forRegisteredNewCrew, crews, user
                         value={crew}
                         onChange={value => setCrew(value)}
                     />
-                    <Button id="button-person">Criar card</Button>
+                    <Button id="button-person" onClick={verifyIfRequiredFieldsAreFilled}>Criar card</Button>
                 </form>
                 <form className="section__form-wrapper " onSubmit={onRegisterNewCrew}>
                     <h2 className="section__form-title">Ou crie um novo Time.</h2>

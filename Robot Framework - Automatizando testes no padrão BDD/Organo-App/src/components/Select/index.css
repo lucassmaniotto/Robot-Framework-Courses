@@ -25,6 +25,11 @@
     outline: none;
 }
 
+.error-field {
+    border: 1px solid red;
+    background-color: #ffeeee;
+}
+
 @media screen and (max-width: 768px) {
     .select__label {
         font-size: 14px;

@@ -50,6 +50,17 @@
     outline: none;
 }
 
+.error-message {
+    color: #FF0000;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.error-field {
+    border: 1px solid red;
+    background-color: #ffeeee;
+}
+
 @media screen and (max-width: 1320px) {
     .input__data--color {
         width: 80%;
@@ -78,3 +89,4 @@
         font-size: 9.5px;
     }
 }
+
