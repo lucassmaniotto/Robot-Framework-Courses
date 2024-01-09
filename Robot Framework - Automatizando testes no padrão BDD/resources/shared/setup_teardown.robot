@@ -1,5 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
+Resource          ../main.robot
 
 *** Keywords ***
 Given I access Organo

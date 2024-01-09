@@ -1,8 +1,5 @@
 *** Settings ***
-Library           SeleniumLibrary
-Resource          setup_teardown.robot
-Test Setup        Given I access Organo
-Test Teardown     Close's Browser
+Resource          ../main.robot
 
 *** Variables ***
 ${INPUT_NAME}              id:name
@@ -36,26 +33,11 @@ ${BUTTON_SUBMIT_CREW}      id:button-crew
 ...                        Leonardo    
 ...                        Michelangelo    
 ...                        Rafael
+
 @{CREW_MEMBER_IMAGE_LIST}  
 ...                        https://64.media.tumblr.com/fe23cfffcb7ab506ed3ba27fcc8d7fd0/f52f98e03b604f57-ef/s540x810/8710cd59c9f000a395cc5388d6a651f34166dbd8.jpg    
 ...                        https://64.media.tumblr.com/2fdfd70d692c164a2388928c0be707b3/242de0e4803c8658-0f/s540x810/06c1e6150436f47c8df34398de627328c3aaa284.png    
 ...                        https://i.pinimg.com/originals/f0/f1/f9/f0f1f928cb37a9b824c90086d33aeca1.png
-
-
-*** Test Cases ***
-Verify if when I fill the crew-member form and submit it, I can see the crew-member in the Programação crew
-    Given I fill the crew-member form
-    And select Programação crew
-    And I submit it
-    Then I should see the crew-member in the Programação crew
-
-Verify if is possible to create a new crew member if we fill the form correctly
-    Given I create three new crew-members and submit it
-    Then identify three new cards in the expected crew
-
-Verify if is possible to create a card for each crew if we fill the form correctly
-    Given I fill the crew-member form
-    Then create and identify a new card in each crew
 
 *** Keywords ***
 Given I fill the crew-member form
@@ -98,3 +80,9 @@ Then create and identify a new card in each crew
         And I submit it
         Element Should Be Visible    //h3[contains(.,'${OPTION_LIST_NAME}[${INDEX}]')]
     END
+
+Given I click on the submit button
+    Click Element    ${BUTTON_SUBMIT_PERSON}
+Then the system will show a warning message
+    Element Should Be Visible     class:error-message
+    Element Text Should Be        class:error-message    Preencha todos os campos obrigatórios.
